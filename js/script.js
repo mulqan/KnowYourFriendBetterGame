@@ -1,3 +1,6 @@
+// Author : Muhammad Mulqan
+// Tgl    :17 Januari 2018
+
 
 // Mendapatkan element dengan id board
 var board = document.getElementById('board');
@@ -71,57 +74,53 @@ function startGame() {
     kotak[i].addEventListener('click', function() {
       // jika posisi permainan tidak membolehkan pemain untuk mengeklik kotak
       // maka fungsi langsung return null
-      if (disabled) {
-        return;
-      }
+      if (disabled) return;
 
       //class 'show' ditambahkan ke element ini (element dengan class 'kotak' pada index i)
       this.classList.add('show');
 
+      // jika tidak ada gambar yang muncul
       if (!flipping) {
+        // firstImg sama dengan gelemen ini
         firstImg = this;
+        // memberikan nilai true kepada flipping, yg artinya sudah ada gambar yg muncul
         flipping = true;
         return;
       }
 
       // jika sedang ada gambar yang muncul (sudah ada gambar pertama yg diklik)
-      // if (flipping) {
-        // maka gambar kedua adalah elemen ini
-        secondImg = this;
+      // maka gambar kedua adalah elemen ini
+      secondImg = this;
 
-        //jika id elemen firstImg dan secondImg tidak sama
-        if (firstImg.id != secondImg.id) {
-          // pada kondisi ini permainan dalam kondisi disabled
-          disabled = true;
-          // eksekusi fungsi anonymous dengan waktu jeda 1 detik
-          setTimeout(function(){
-            // jika properti data-id elemen firstImg dan secondImg tidak sama
-            if (firstImg.dataset.id != secondImg.dataset.id) {
-              // hapus class show (kembali menghilang gambar pada elemen firstImg dan secondImg)
-              firstImg.classList.remove('show');
-              secondImg.classList.remove('show');
-            } else {
-              // jika sama data-id elemen firstImg dan secondImg
-              // maka kedua elemen tersebut diberikan class 'solved'
-              firstImg.classList.add('solved');
-              secondImg.classList.add('solved');
-            }
-            // pada kondisi ini permainan kembali seperti semula (disabled menjadi false)
-            disabled = false;
-          }, 1000 );
+      //jika id elemen firstImg dan secondImg tidak sama
+      if (firstImg.id != secondImg.id) {
+        // pada kondisi ini permainan dalam kondisi disabled
+        disabled = true;
+        // eksekusi fungsi anonymous dengan waktu jeda 1 detik
+        setTimeout(function(){
+          // jika properti data-id elemen firstImg dan secondImg tidak sama
+          if (firstImg.dataset.id != secondImg.dataset.id) {
+            // hapus class show (kembali menghilang gambar pada elemen firstImg dan secondImg)
+            firstImg.classList.remove('show');
+            secondImg.classList.remove('show');
+          } else {
+            // jika sama data-id elemen firstImg dan secondImg
+            // maka kedua elemen tersebut diberikan class 'solved'
+            firstImg.classList.add('solved');
+            secondImg.classList.add('solved');
+          }
+          // pada kondisi ini permainan kembali seperti semula (disabled menjadi false)
+          disabled = false;
+        }, 1000 );
 
-          // tidak ada gambar yang muncul kerena sudah dihilangkan class 'show' jika tdk sama gambarnya
-          // dan jika sama maka akan ditambahkan class 'solved'
-          // oleh karena itu variabel flipping kembali menjadi false
-          flipping = false;
-        }
-      // }
-      // else {
-      //   firstImg = this;
-      //   flipping = true;
-      // }
+        // tidak ada gambar yang muncul kerena sudah dihilangkan class 'show' jika tdk sama gambarnya
+        // dan jika sama maka akan ditambahkan class 'solved'
+        // oleh karena itu variabel flipping kembali menjadi false
+        flipping = false;
+      }
 
       // kepeluan debugging, boleh dihapus jika sudah paham
+      // tekan ctrl + shift + i, lalu pilih tab console
       console.log({
         'firstImg' : firstImg,
         'secondImg' : secondImg,
@@ -135,6 +134,7 @@ function startGame() {
 
 }
 
+// event listener untuk tombol dgn id restart
 document.getElementById('restart').addEventListener('click', function(){
   startGame();
 });
