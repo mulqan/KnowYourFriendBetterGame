@@ -1,0 +1,47 @@
+* {box-sizing: border-box;}
+
+.board {
+  display: grid;
+  grid-gap: 10px;
+  grid-auto-rows: 100px;
+  grid-template-columns: repeat(10, 100px);
+  grid-template-rows: repeat(6, 100px);
+}
+
+.kotak {
+  border: 2px solid #ffa94d;
+  border-radius: 5px;
+  background-color: #ffd8a8;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.kotak img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  display: none;
+}
+
+.show img {
+  display: inline-block !important;
+}
+
+.solved {
+  border: 2px solid #319b4f !important;
+  transition: all .5s;
+}
+
+#restart {
+  background: #ffa94d;
+  color: white;
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 5px;
+  float: right;
+}
+
+#restart:hover {
+  background: #e07d14;
+  transition: all .2s;
+}
