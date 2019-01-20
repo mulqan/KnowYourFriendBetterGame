@@ -1,6 +1,7 @@
 // Author : Muhammad Mulqan
 // Tgl    :17 Januari 2018
 
+//ini koment
 
 //variabel skor
 let score = 0
