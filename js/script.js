@@ -2,6 +2,10 @@
 // Tgl    :17 Januari 2018
 
 
+//variabel skor
+let score = 0
+const skorElement = document.querySelector('#skor')
+
 // Mendapatkan element dengan id board
 var board = document.getElementById('board');
 
@@ -30,6 +34,7 @@ function shuffle(array) {
 
 // fungsi memulai atau merestart game
 function startGame() {
+  skorElement.innerHTML = `Score anda : ${score}`
   // variabel menyimpan nomor gambar2 yang akan ditampilkan
   var box = [];
 
@@ -108,6 +113,10 @@ function startGame() {
             // maka kedua elemen tersebut diberikan class 'solved'
             firstImg.classList.add('solved');
             secondImg.classList.add('solved');
+
+            //tambah skor 
+            score += 10
+            skorElement.innerHTML = `Score anda : ${score}`
           }
           // pada kondisi ini permainan kembali seperti semula (disabled menjadi false)
           disabled = false;
@@ -136,6 +145,7 @@ function startGame() {
 
 // event listener untuk tombol dgn id restart
 document.getElementById('restart').addEventListener('click', function(){
+  score = 0
   startGame();
 });
 
