@@ -28,6 +28,12 @@ function shuffle(array) {
 	return array;
 }
 
+//membuat getaran ketika restart game.
+function makeVibrate(pola){
+  var getar = window.navigator.vibrate(pola);
+  console.log(getar);
+}
+
 // fungsi memulai atau merestart game
 function startGame() {
   // variabel menyimpan nomor gambar2 yang akan ditampilkan
