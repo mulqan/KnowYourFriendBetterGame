@@ -35,6 +35,12 @@ function shuffle(array) {
 
 // fungsi memulai atau merestart game
 function startGame() {
+  navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+
+  if (navigator.vibrate) {
+    window.navigator.vibrate(500);
+  }
+
   skorElement.innerHTML = `Score anda : ${score}`
   // variabel menyimpan nomor gambar2 yang akan ditampilkan
   var box = [];
@@ -115,7 +121,7 @@ function startGame() {
             firstImg.classList.add('solved');
             secondImg.classList.add('solved');
 
-            //tambah skor 
+            //tambah skor
             score += 10
             skorElement.innerHTML = `Score anda : ${score}`
           }
